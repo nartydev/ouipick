@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+body {
+  padding:0;margin:0;
+  background:#fff;
+  font-family:"Montserrat";
+  overflow:hidden;
+}
+
+.gm-style-pbc + div > div:nth-child(2) > div:last-child > div:first-child > div > div:nth-child(2) {
+  background:none!important;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 0px -1px!important;
+}
+
+.gm-style-pbc + div > div:nth-child(2) > div:last-child > div:first-child > div > div:nth-child(3) {
+  margin-top:-9px;
+}
+
+.gm-style-pbc + div > div:nth-child(2) > div:last-child > div:first-child > div > div:nth-child(3) > div > div {
+  background-color: rgb(253, 88, 88)!important;
+}
+
+.gm-style-pbc + div > div:nth-child(2) > div:last-child > div:first-child > div > div:first-child {
+  border-top: 24px solid rgba(0, 0, 0, 0);
+}
+
+.gm-style-pbc + div > div:nth-child(2) > div:last-child > div:first-child > div > div:nth-child(4) {
+  background:none!important;
+}
+
+.gm-style-iw {
+  margin-top: 30%!important;
+}
+
+.gm-style-iw + div {
+  margin-top: 39%;
+  margin-right: 11%;
+}
+
+@media screen and (max-width: 680px) {
+  .gm-style-iw + div {
+    margin-right:20%;
+  }
+}

@@ -1,0 +1,143 @@
+<div class="all">
+  <div class="navigation">
+    <div class="red-round" (click)="getPrevProject()"><img src="../../assets/baseline-arrow_upward-24px.svg"/></div>
+    <div class="red-round" (click)="getNextProject()"><img src="../../assets/baseline-arrow_downward-24px.svg"/></div>    
+  </div>
+  <header [class.visible]="index == 0" [class.end]="index == 1">
+    <div class="navbar-different">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="logo">
+          <img src="../../assets/logo.svg" class="img-logo">
+        </div>
+        <nav>
+          <ul class="menu">
+            <li>
+              <a routerLink="/">Accueil</a>
+            </li>
+            <li>
+              <a routerLink="/map">Map</a>
+            </li>
+            <li>
+              <a routerLink="/event">Les évènements</a>
+            </li>
+            <li>
+              <a routerLink="/login">Se connecter</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+    <div class="bottom-sub">
+      <h1 class="text-center">Inscrivez-vous</h1>
+      <form method="post" class="group-input">
+        <input type="text" class="input-white" placeholder="Entrer votre email" name="email">
+        <input type="submit" class="submit-button">
+      </form>
+      <div class="text-center or">OU</div>
+      <div class="text-center">
+        <div (click)="getNextProject()" class="btn-white"> En savoir plus </div>
+      </div>
+    </div>
+    <div class="scroll">Scroll</div>
+  </header>
+  <section class="red" [class.visible]="index == 1" [class.end]="index == 2">
+    <div class="banner-right"></div>
+    <div class="banner-left"></div>
+    <div class="center-bloc container">
+      <h1 class="text-center circle-title">Les différents évènements
+      </h1>
+      <div class="round-circle">
+        <div class="circle">
+          <div class="big-circle"></div>
+          <img src="../../assets/logo.svg" class="circle-img">
+          <div (click)="changeValueEvent(1)" class="small-circle small_circle_1">
+            <img src="../../assets/baseline-account_circle-24px.svg" class="svg-circle" />
+          </div>
+          <div (click)="changeValueEvent(2)" class="small-circle small_circle_2">
+            <img src="../../assets/baseline-shopping_basket-24px.svg" class="svg-circle" />
+          </div>
+          <div (click)="changeValueEvent(3)" class="small-circle small_circle_3">
+            <img src="../../assets/baseline-supervisor_account-24px.svg" class="svg-circle" />
+          </div>
+          <div (click)="changeValueEvent(4)" class="small-circle small_circle_4">
+            <img src="../../assets/baseline-account_balance-24px.svg" class="svg-circle" />
+          </div>
+        </div>
+        <div class="right">
+          <div class="text-center">
+            <div *ngIf="eventGroup === 1" class="left-event">  <div class="button-red" (click)="eventGroupId(0)"> Précédent </div> </div>
+            <div *ngIf="eventGroup === 0" class="right-event" (click)="eventGroupId(1)"> <div class="button-red"> Suivant </div> </div>
+          </div>
+          <div class="group-event" [class.show]="eventGroup === 0">
+          <div class="description" [class.show]="valueEvent === 1">
+            <img src="../../assets/baseline-account_circle-24px.svg" class="svg-circle icon-group" />
+            <h2>Rencontre</h2>
+            <p>
+              Un temps libre ? Un besoin précis ? Créez un Pick sur la carte OuiPick, pour une durée de 20 minutes. Si un utilisateur le Repick, votre Pick grossira...
+            </p>
+          </div>
+          <div class="description" [class.show]="valueEvent === 2">
+            <img src="../../assets/baseline-shopping_basket-24px.svg" class="svg-circle icon-group" />
+            <h2>Shopping</h2>
+            <p>
+              Redécouvrez vos commerces locaux. Chaque jours des commerçants ont besoin de communiquer sur leurs invendus afin d’éviter le gaspillage alimentaire.
+            </p>
+          </div>
+        </div>
+        <div class="group-event" [class.show]="eventGroup === 1">
+          <div class="description" [class.show]="valueEvent === 3">
+            <img src="../../assets/baseline-supervisor_account-24px.svg" class="svg-circle icon-group" />
+            <h2>Collaboration</h2>
+            <p>
+              Une idée ? Un surplus de motivation ? Monte ton projet géolocalisé et invites les utilisateurs alentours à venir participer ! Tous pour un, un pour tous !
+            </p>
+          </div>
+          <div class="description" [class.show]="valueEvent === 4">
+            <img src="../../assets/baseline-account_balance-24px.svg" class="svg-circle icon-group" />
+            <h2>démocratie</h2>
+            <p>
+              La démocratie est une rencontre, mais nous avons tenu à en faire une catégorie à part entière. Créer ou participez à des événements visant à construire notre démocratie.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  </section>
+
+  <section class="blue" [class.visible]="index == 2" [class.end]="index == 3">
+    <div class="center-bloco container">
+      <h1 class="text-center"> “Virtuel et le réel entrent en collision... </h1>
+      <p class="text-justify">Nous voulons cr&eacute;er un outil pour servir l'int&eacute;r&ecirc;t de tous. Utilisable au quotidien pour fluidifier
+        nos &eacute;changes r&eacute;els, nous pousser &agrave; rencontrer ceux qui gravitent autour de nous tous les jours
+        et que l'on ignore parfois par pr&eacute;jug&eacute;s. Notre premi&egrave;re image d'une personne s'av&egrave;re
+        parfois vraie, parfois fausse. Dans tous les cas, elle nous ferme des portes. Cette m&eacute;fiance de l'autre ne
+        fait que s'aggraver lorsque l'on se laisse bercer par les m&eacute;dias.</p>
+      <p class="text-justify">Avec Crowdpick, nous aimerions d&eacute;monter progressivement la lourde probl&eacute;matique que soul&egrave;vent
+        les grandes villes et leur densit&eacute;. Plus nous sommes nombreux, moins nous nous parlons. Plus il est difficile
+        de conna&icirc;tre ceux qui nous entourent et ainsi savoir o&ugrave; sont les opportunit&eacute;s. Alors oui nous,
+        nous organisons sur des &eacute;v&eacute;nements servant &agrave; nous rassembler par int&eacute;r&ecirc;t.</p>
+      <p class="text-justify">Mais que faites vous du quotidien ? Celui de toutes ces attentes interminables sans oser parler &agrave; ceux qui attendent
+        avec vous ? Ces moments o&ugrave; la g&ecirc;ne s'installe, car ce que nous cherchons n'est pas encore sur Google
+        et qu'il nous faut trouver quelqu'un &agrave; proximit&eacute; ? Toutes ces micros merveilles qui vous auraient &eacute;mue,
+        &eacute;tonn&eacute; ou amus&eacute; et qui se trouvent juste &agrave; une rue en parall&egrave;le de vous ? Vous
+        ne voyez pas cela durant votre itin&eacute;raire. Sans arr&ecirc;t en mouvement, toutes ces choses m&eacute;riteraient
+        notre attention, mais dissimul&eacute;es par un immeuble ou deux. Que faites vous de cette personne qui vous croise
+        dans la rue et &agrave; qui vous ne pr&ecirc;terez m&ecirc;me pas un regard alors que votre rencontre aurait &eacute;t&eacute;
+        plus enrichissante que toutes celles que vous auriez faites dans la semaine ? Ce contexte pr&eacute;cis d&ucirc;
+        au hasard, et cette chance qui r&eacute;git les personnes que l'on rencontre ou que l'on ne rencontre pas.</p>
+      <p class="text-justify">Pourtant, nous pensons qu'aujourd'hui l'homme savant a les outils n&eacute;cessaires pour non pas ab&icirc;mer le hasard
+        d'une rencontre, mais en provoquer l'&Eacute;tincelle. Nous communiquons avec des personnes du monde entier en temps
+        r&eacute;el, allant m&ecirc;me jusqu'&agrave; pouvoir voir le monde au travers des yeux de quelqu'un d'autre en direct.
+        Au-del&agrave; de la po&eacute;sie de voir un papillon &eacute;clore en direct &agrave; l'autre bout de la terre,
+        nous pensons que toutes ces techniques doivent avoir du sens et surtout coller au plus pr&egrave;s de nos &eacute;motions.
+        Celles-ci sont instantan&eacute;es et &eacute;ph&eacute;m&egrave;res. Nous avons donc con&ccedil;u un outil provoquant
+        l'instant, et l'&eacute;ph&eacute;m&egrave;re. Alors sortez &agrave; nouveau, jetez les yeux autour de vous et allumez
+        Crowdpick. De nouvelles opportunit&eacute;s s'offrent &agrave; vous &agrave; chaque seconde.</p>
+      <p class="text-justify">La beaut&eacute; vous suit. La ville respire....&rdquo;</p>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,94 @@
+<header>
+  <a routerLink="/"><img src="../../assets/logo.svg" alt="Logo OuiPick" class="logo"></a>
+  <div class="right_corner">
+    <div *ngIf="!(authService.user$ | async)" class="flex">
+    <button routerLink="/event" class="create"><img src="../../assets/thumbtack.svg" alt="Créer">Créer</button>
+      <div (click)="changeValueLogin()"><img src="../../assets/account.svg" alt="Logo compte"></div>
+    </div>
+    <div *ngIf="authService.user$ | async" class="flex">
+      <div class="content-user"><img src="../../assets/account.svg" alt="Logo compte"> <span> {{ (authService.user$ | async)?.email }} </span> </div>
+      <div (click)="logoutUser()"><img src="../../assets/baseline-exit_to_app-24px.svg" class="left-marge" alt="Flat thumbtack" ></div>
+    </div>
+  </div>
+</header>
+<div [class.successNotif]="logoutValue === true" class="notif">
+    <img src="./../../assets/baseline-check_circle_outline-24px.svg">  <span>Vous êtes désormais déconnecté</span>
+  </div>
+<div class="sides">
+<div class="thumbtacks">
+  <div class="thumbtack_1" (click)="changeCategorie(0)" (mouseenter)="mouseEnterPoint(0)" (mouseleave)="mouseLeavePoint(0)">
+      <div class="round_background meeting"><img src="../../assets/thumbtack.svg" alt="Flat thumbtack" ></div>
+      <button [class.show]="pointHover[0] === 1">Rencontre</button>
+  </div>
+  <div class="thumbtack_2" (click)="changeCategorie(1)" (mouseenter)="mouseEnterPoint(1)" (mouseleave)="mouseLeavePoint(1)">
+      <div class="round_background shopping"><img src="../../assets/thumbtack.svg" alt="Flat thumbtack" ></div>
+      <button [class.show]="pointHover[1] === 1">Shopping</button>
+  </div>
+  <div class="thumbtack_3" (click)="changeCategorie(2)" (mouseenter)="mouseEnterPoint(2)" (mouseleave)="mouseLeavePoint(2)">
+      <div class="round_background collaboration"><img src="../../assets/thumbtack.svg" alt="Flat thumbtack" ></div>
+      <button [class.show]="pointHover[2] === 1">Collaboration</button>
+  </div>
+  <div class="thumbtack_4" (click)="changeCategorie(3)" (mouseenter)="mouseEnterPoint(3)" (mouseleave)="mouseLeavePoint(3)">
+      <div class="round_background democratie"><img src="../../assets/thumbtack.svg" alt="Flat thumbtack" ></div>
+      <button [class.show]="pointHover[3] === 1">Démocratie</button>
+  </div>
+
+</div>
+
+<div class="switch_view">
+  <a href="#" title="Page vue en liste"><img src="../../assets/gridview.svg" alt="icônes disposition liste"></a>
+  <a href="#" title="Page vue en map"><img src="../../assets/map.svg" alt="icônes disposition map"></a>
+</div>
+</div>
+<div class="maps">
+  <agm-map [latitude]="lat" [longitude]="lng">
+    <agm-marker
+    *ngFor="let m of markers; let i = index"
+    [latitude]="m.lat"
+    [longitude]="m.lng"
+    [iconUrl]="m.image"
+    options="m.options.visible"
+    [opacity]="m.options.opacity"
+    [draggable]="m.options.draggable"
+   >
+      <agm-info-window [disableAutoPan]="false" #infoWindow>
+        <div class="pop">
+          <img class="img" src="https://cdn.discordapp.com/attachments/424925395557810187/450637815995170836/ffff.jpg" alt="images">
+          <div class="popPlus">
+            <div class="popPlusbakcground">
+              <p class="plus">+</p>
+            </div>
+          </div>
+          <div class="popText">
+            <p class="popTextDescription1">Cours de
+              <span class="backgroundWhite">HulaHoop</span> maintenant sur la
+              <span class="backgroundWhite">plage</span><br> Venez découvrir ou regarder !
+            </p>
+          </div>
+          <div class="popInfo">
+            <div class="popInfodiv">
+              <img src="././assets/baseline-people-24px.svg" class="icon-desc" alt="people">
+              <div class="text-desc">8</div>
+            </div>
+            <div class="popInfodiv" >
+              <img src="././assets/baseline-track_changes-24px.svg" class="icon-desc" alt="people">
+              <div class="text-desc">5</div>
+            </div>
+            <div class="popInfodiv">
+              <img src="././assets/baseline-access-time-24px.svg" class="icon-desc" alt="people">
+              <div class="text-desc">10 min</div>
+            </div>
+            <div class="popInfodiv">
+              <img src="././assets/baseline-account-24px.svg" class="icon-desc" alt="people">
+              <div class="text-desc">Elise.P</div>
+            </div>
+
+          </div>
+
+        </div>
+      </agm-info-window>
+    </agm-marker>
+  </agm-map>
+</div>
+<app-login [visibleLogin]="visibleLogin"></app-login>
+

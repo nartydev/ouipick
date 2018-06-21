@@ -1,0 +1,48 @@
+<header>
+    <a routerLink="/" title="Page d'accueil"><img src="../../../assets/logo.svg" alt="Logo Oui-Pick"></a>
+    <a routerLink="/map" title="Lien vers Map">Map</a>
+  </header>
+  
+  <div class="event-page">
+  <div class="event-creation">
+    <h2>Créer un événement</h2>
+
+    <form [formGroup]="form" (ngSubmit)="createEvent()">
+      <div class="form-group">
+        <input type="text" formControlName="nameEvent"  required name="titleEvent" class="form-control" placeholder="Nom" id="titleEvent">
+      </div>
+    <!-- <div *ngIf="!eventTitle.valid && eventTitle.touched" >Veuillez remplir les champs</div> -->
+      <div class="form-group">
+        <input type="text" formControlName="descriptionEvent" required name="descriptionEvent" class="form-control" placeholder="Description" id="descriptionEvent">
+        <!-- <div *ngIf="!eventDesc.valid && eventDesc.touched" >Veuillez remplir les champs</div> -->
+      </div>
+      <div class="form-group">
+        <input type="text" formControlName="addressEvent" required name="locationEvent" class="form-control" placeholder="Adresse" id="locationEvent">
+        <!-- <div *ngIf="!eventLoc.valid && eventLoc.touched" >Veuillez remplir les champs</div> -->
+      </div>
+      <div class="form-group">
+        <select formControlName="categoryEvent" required name="categoryEvent" class="form-control" id="categoryEvent">
+          <option value="" disabled selected>Catégorie</option>
+          <option value="Rencontre">Rencontre</option> 
+          <option value="Shopping">Shopping</option>
+          <option value="Démocratie">Démocratie</option>
+          <option value="Collaboration">Collaboration</option>
+        </select>
+        <!-- <div *ngIf="!eventCate.valid && eventCate.touched" >Veuillez remplir les champs</div> -->
+      </div>
+      <button type="submit" class="validation" [disabled]="form.invalid">Créer</button>
+    </form>
+    <p>
+      Déplace le curseur sur la carte pour définir l'adresse de ton événément !
+    </p>
+  </div>
+  
+  <agm-map [latitude]="lat" [longitude]="lng">
+    <agm-marker
+      [latitude]="lat"
+      [longitude]="lng"
+      [markerDraggable]="true"
+      (dragEnd)="onCoordMarkerDropped($event)"
+      ></agm-marker>
+  </agm-map>
+</div>

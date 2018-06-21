@@ -1,0 +1,41 @@
+<div *ngIf="!(authService.user$ | async)" class="form-container" [class.visible]="visibleLogin === 1">
+    <div *ngIf="selectLoginRegister === 0" class="login">
+      <div class="city">
+        <div class="filter"><p>Connexion</p></div>
+        <img (click)="visibleLogin = 0" src="../../assets/baseline-clear-24px.svg" class="clear">
+      </div>
+      <form #login="ngForm" (ngSubmit)="loginUser()">
+        <div class="pseudo">
+          <input type="text" name="email" placeholder="Email" [(ngModel)]="existingUser.email">
+        </div>
+        <div class="password">
+          <input type="password" name="password" placeholder="Mot de passe" [(ngModel)]="existingUser.password">
+        </div>
+        <input type="submit" class="validation" value="Se connecter">
+      </form>
+      <a (click)="selectLoginRegister = 1" class="alc">Pas de compte ? <strong>Crées-en un ici !</strong></a>
+    </div>
+    <div *ngIf="selectLoginRegister === 1">
+        <div class="city">
+          <div class="filter"><p>Créer un compte</p></div>
+          <img (click)="visibleLogin = 0" src="../../assets/baseline-clear-24px.svg" class="clear">
+        </div>
+        <form #f="ngForm" (ngSubmit)="registerUser()">
+            <input type="text" name="email" placeholder="Email" [(ngModel)]="newUser.email">
+            <input type="password" name="password" placeholder="Mot de passe" [(ngModel)]="newUser.password">
+            <input type="text" name="lastname" placeholder="Nom" [(ngModel)]="newUser.lastname">
+            <input type="text" name="firstname" placeholder="Prénom" [(ngModel)]="newUser.firstname">
+            <input type="text" name="adress" placeholder="Adresse" [(ngModel)]="newUser.adress">
+            <input class="validation" type="submit" value="Créer un compte">
+        </form>
+        <a (click)="selectLoginRegister = 0" class="alc">Vous avez un compte ? <strong>Connectez-vous !</strong></a>
+      </div>
+</div>
+<div [class.successNotif]="loginValue === true" class="notif">
+    <img src="./../../assets/baseline-check_circle_outline-24px.svg"> <span>Vous êtes désormais connecté</span>
+  </div>
+  
+  <div [class.successNotif]="registerValue === true" class="notif">
+    <img src="./../../assets/baseline-check_circle_outline-24px.svg">  <span>Vous êtes désormais inscrit et connecté</span>
+  </div>
+
